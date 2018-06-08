@@ -1,0 +1,41 @@
+{% extends 'projects/base.html' %}
+
+{% block content %}
+{{block.super}}
+<div class="container">
+   <div class="row display-news">
+       
+        <h3 class="all-headers">Categories/tags:</h3>
+
+       <!-- Loop through news -->
+       {% for item in projects %}
+
+
+       <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 articles-home">
+           <h1 class="cardHeader">{{item.title}}</h1>
+
+           {% if item.article_image.url %}
+           <img src="{{item.article_image.url}}" class="img-responsive" alt="Image">
+           {% else %}
+           <p></p>
+           {% endif %}
+           <h2> {{news_item.title}} </h2>
+           <hr>
+           <p> {{news_item.post|truncatechars:400}} <a href="/article/{{item.id}}" class="btn btn-link">Read more</a></p>
+               <p class="small"> Category:</p>
+
+               {% for category in item.category.all%}
+                    <span class="cat-tag">{{ category.category_type}} </span>
+                    {% endfor %}
+           <p> {{news_item.editor}} </p>
+           <p class="small">Posted on: {{item.pub_date}} </p>
+       </div>
+       {% empty %}
+       <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+           <h2> No Articles today </h2>
+       </div>
+       {% endfor %}        
+   </div>
+</div>
+{% endblock %}
+
