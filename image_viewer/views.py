@@ -6,9 +6,10 @@ from .models import Image,Category,Tag
 def homePageElements(request):
     all_images = Image.view_all_pictures()
     rel_categories = Category.objects.all()
+    rel_tags = Tag.objects.all()
     date = dt.date.today()
     
-    return render(request, 'homepage.html', {"date": date, "all_images": all_images, "rel_categories":rel_categories})
+    return render(request, 'homepage.html', {"date": date, "all_images": all_images, "rel_categories":rel_categories, "rel_tags":rel_tags})
 
 
 
