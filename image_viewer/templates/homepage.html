@@ -2,16 +2,15 @@
 
 {% block content %}
 {{block.super}}
-<div class="container">
+<div class="container home-background">
    <div class="row display-news">
        
         <h3 class="all-headers">Categories/tags:</h3>
 
        <!-- Loop through news -->
        {% for item in all_images %}
-
-
-       <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 articles-home">
+       
+       <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 images-home">
            <h1 class="cardHeader">{{item.title}}</h1>
 
            {% if item.article_image.url %}
@@ -21,7 +20,7 @@
            {% endif %}
            <h2> {{news_item.title}} </h2>
            <hr>
-           <p> {{news_item.post|truncatechars:400}} <a href="/article/{{item.id}}" class="btn btn-link">Read more</a></p>
+           <p> {{news_item.post|truncatechars:400}} <a href="/image/{{item.id}}" class="btn btn-link">Read more</a></p>
                <p class="small"> Category:</p>
 
                {% for category in item.category.all%}

@@ -27,8 +27,8 @@ def images_by_date(request, past_date):
     # if date == dt.date.today():
     #     return redirect(news_today)
     
-    project = Image.pictures_by_date(date)
-    return render(request, 'all_images/archives.html', {"date": date, "project":project})
+    img = Image.pictures_by_date(date)
+    return render(request, 'all_images/image.html', {"date": date, "img":img})
 
 
 
@@ -46,6 +46,7 @@ def search_results(request):
     else:
         message = "Oop, looks like that doesn't exist.."
         return render(request, 'projects/search.html',{"message":message})
+
 
 def image(request, image_id):
     try:
