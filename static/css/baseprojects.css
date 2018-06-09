@@ -50,3 +50,7 @@ font-family: 'Mitr', sans-serif; */
   line-height: 60px; /* <-- this is what you must define */
   vertical-align: middle;
 }
+
+.bluecolor{
+  background-color: lightblue;
+}
