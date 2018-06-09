@@ -47,6 +47,10 @@ class Image(models.Model):
     pub_date = models.DateTimeField(auto_now_add=True)
     article_image = models.ImageField(upload_to = 'view_images/')
     location = models.CharField(max_length = 60)
+    # comments = models.ForeignKey(Vote)
+
+    # def votes_count(self):
+    #     return self.votes.all().count()
 
 
     @classmethod
@@ -72,6 +76,15 @@ class Image(models.Model):
     def pictures_by_date(cls,date):
         results = cls.objects.filter(pub_date__date = date)
         return results
+
+    # class Vote(models.Model):
+    #     class Meta:
+    #         unique_together = [('post', 'user')]
+
+    #     post = models.ForeignKey(Post, related_name='votes')
+    #     user = models.ForeignKey('auth.User')
+
+
 
 
 

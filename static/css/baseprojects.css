@@ -48,6 +48,13 @@ font-family: 'Mitr', sans-serif; */
   font-family: 'Share Tech', sans-serif;
   color: grey;
 }
+.todays_date{
+  font-family: 'Share Tech', sans-serif;
+  color: #fff;
+}
+.todays_date p {
+  font-size: 10px;
+}
 
 .cat-tag {
   font-size: 12px;
@@ -63,4 +70,13 @@ font-family: 'Mitr', sans-serif; */
 
 .bluecolor{
   background-color: lightblue;
+}
+
+.ws-title{
+  font-family: 'Share Tech Mono', monospace;
+  text-align: center;
+}
+
+.ws-title h1{
+  font-size: 150px;
 }
