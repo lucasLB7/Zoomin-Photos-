@@ -1,15 +1,17 @@
 from django.shortcuts import render
 from django.http import HttpResponse, Http404
 import datetime as dt
-from .models import Image,Category,Tag
+from .models import Image,Category,Tag, Location
 
 def homePageElements(request):
     all_images = Image.view_all_pictures()
     rel_categories = Category.objects.all()
     rel_tags = Tag.objects.all()
     date = dt.date.today()
+    location = Location.objects.all()
     
-    return render(request, 'homepage.html', {"date": date, "all_images": all_images, "rel_categories":rel_categories, "rel_tags":rel_tags})
+    
+    return render(request, 'homepage.html', {"date": date, "all_images": all_images, "rel_categories":rel_categories, "rel_tags":rel_tags, "location": location})
 
 
 
@@ -50,11 +52,13 @@ def search_results(request):
 
 
 def image(request, image_id):
+    date = dt.date.today()
+
     try:
         image = Image.objects.get(id = image_id)
     except DoesNotExist:
         raise Http404()
-    return render(request,'all_images/image.html', {"image":image})
+    return render(request,'all_images/image.html', {"image":image, "date":date})
 
 # def categories(request):
 #     category = Category.objects.all()

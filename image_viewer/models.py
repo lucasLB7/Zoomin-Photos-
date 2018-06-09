@@ -51,6 +51,8 @@ class Location(models.Model):
         ("ANTARCTICA", "ANTARCTICA"),
     )
     continent = models.CharField(max_length = 30, choices=continents, default="AFRICA")
+    country = models.CharField(max_length = 30)
+    location_descrition = models.CharField(max_length = 30)
 
     def __str__(self):
         return self.continent

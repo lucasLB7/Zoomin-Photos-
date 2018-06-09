@@ -36,13 +36,19 @@
                 {% for tag in item.tag.all %}
                     <span class="cat-tag">{{ tag.tags }} </span>
                     {% endfor %}
+                    
+                    <h4>Location: </h4>
+                    {% for loc in item.location.all %}
+                        <span class="cat-tag">{{ loc.country }} </span>
+                        {% endfor %}
 
            <p> {{news_item.editor}} </p>
            <p class="small">Posted on: {{item.pub_date}} </p>
+           
        </div>
        {% empty %}
        <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
-           <h2> No Articles today </h2>
+           <h2> Whoop looks like we lost your pictures.... :O </h2>
        </div>
        {% endfor %}        
    </div>
