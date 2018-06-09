@@ -8,17 +8,17 @@
 
         <div class="col-md-3">
             <h3 class="all-headers">Categories/tags:</h3>
-            {% for category in article.category.all%}
+            {% for category in image.category.all%}
                 <h4 class="article-tag">{{ category.category_type}} </h4>
                 {% endfor %}
         </div>
 
         <div class="col-md-9">
-        <h1 class="all-headers">{{article.title}}</h1>
+        <h1 class="all-headers">{{image.title}}</h1>
 
 
    <div class="row">
-     <img src="{{article.article_image.url}}"  class="img-responsive" alt="">
+     <img src="{{image.article_image.url}}"  class="img-responsive" alt="">
    </div>
         </div>
         </div>
@@ -27,12 +27,12 @@
 
     <div class="row">
         <h3 class="all-headers">Project description:</h3>
-        <p>{{article.description}}</p>
+        <p>{{image.description}}</p>
     </div>
 
 
    <div class="row of-less-importance-text">
-     <p>Posted <strong>{{article.pub_date|timesince}}</strong> ago, by <strong>{{article.editor.first_name}}</strong></p>
+     <p>Posted <strong>{{image.pub_date|timesince}}</strong> ago, by <strong>{{article.editor.first_name}}</strong></p>
    </div>
 
  </div>
