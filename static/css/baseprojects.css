@@ -9,12 +9,12 @@ font-family: 'Mitr', sans-serif; */
 
 
 .home-background{
-  background-color: #3AAFA9;
+  background-color: #F5F5F5;
 }
 
 .images-home{
   box-shadow: 10px 10px 5px grey;
-  background-color: #e1f7d5;
+  background-color: #A0A0A0;
   border-radius: 5px 0 5px 0;
   margin: 2%;
 }
@@ -31,7 +31,7 @@ font-family: 'Mitr', sans-serif; */
 
 .article-tag {
   border-radius: 15px 5px 15px 5px;
-  background-color: lightblue;
+  background-color: #E8E8E8;
   width: 200px;
   height: 60px;
   text-align: center;

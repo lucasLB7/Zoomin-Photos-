@@ -28,6 +28,8 @@ class Category(models.Model):
 
     def __str__(self):
         return self.category_type
+    class Meta:
+        verbose_name_plural = "Category"
 
 
 class Tag(models.Model):
@@ -38,6 +40,25 @@ class Tag(models.Model):
         return self.tags
 
 
+class Location(models.Model):
+    continents = (
+        ("AFRICA", "AFRICA"),
+        ("EUROPE", "EUROPE"),
+        ("ASIA", "ASIA"),
+        ("NORTH_AMERICA", "NORTH AMERICA"),
+        ("SOUTH_AMERICA", "SOUTH AMERICA"),
+        ("AUSTRALIA", "AUSTRALIA"),
+        ("ANTARCTICA", "ANTARCTICA"),
+    )
+    continent = models.CharField(max_length = 30, choices=continents, default="AFRICA")
+
+    def __str__(self):
+        return self.continent
+    class Meta:
+        verbose_name_plural = "Location"
+
+
+
 class Image(models.Model):
     title = models.CharField(max_length = 60)
     description = models.TextField()
@@ -46,7 +67,7 @@ class Image(models.Model):
     tag = models.ManyToManyField(Tag, related_name='tag')
     pub_date = models.DateTimeField(auto_now_add=True)
     article_image = models.ImageField(upload_to = 'view_images/')
-    location = models.CharField(max_length = 60)
+    location = models.ManyToManyField(Location, related_name='location')
     # comments = models.ForeignKey(Vote)
 
     # def votes_count(self):
@@ -83,6 +104,8 @@ class Image(models.Model):
 
     #     post = models.ForeignKey(Post, related_name='votes')
     #     user = models.ForeignKey('auth.User')
+
+
 
 
 
