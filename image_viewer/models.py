@@ -46,6 +46,7 @@ class Image(models.Model):
     tag = models.ManyToManyField(Tag, related_name='tag')
     pub_date = models.DateTimeField(auto_now_add=True)
     article_image = models.ImageField(upload_to = 'view_images/')
+    location = models.CharField(max_length = 60)
 
 
     @classmethod
