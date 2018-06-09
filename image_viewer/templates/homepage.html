@@ -5,7 +5,7 @@
 <div class="container home-background">
    <div class="row display-news">
        
-        <h3 class="all-headers">Categories/tags:</h3>
+        <h3 class="all-headers image-center">Browse images:</h3>
 
        <!-- Loop through news -->
        {% for item in all_images %}
@@ -24,8 +24,15 @@
                <p class="small"> Category:</p>
 
                {% for category in item.category.all%}
-                    <span class="cat-tag">{{ category.category_type}} </span>
+
+                    <span class="cat-tag">{{ category.category_type }} </span>
                     {% endfor %}
+
+                    <h4>Image tags: </h4>
+                {% for tag in item.tag.all %}
+                    <span class="cat-tag">{{ tag.tags }} </span>
+                    {% endfor %}
+
            <p> {{news_item.editor}} </p>
            <p class="small">Posted on: {{item.pub_date}} </p>
        </div>
