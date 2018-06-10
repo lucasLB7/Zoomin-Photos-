@@ -86,7 +86,7 @@ WSGI_APPLICATION = 'zoomin_photos.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'zoominphotos',
+        'NAME': 'zoomingphotos',
         'USER': 'd4rkkn1t3',
         'PASSWORD': 'psql',
     }
@@ -145,3 +145,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 # EASY_MAPS_GOOGLE_MAPS_API_KEY = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ___0123456789'
+
+# pass: AdminAdmin
+# user: Admin
