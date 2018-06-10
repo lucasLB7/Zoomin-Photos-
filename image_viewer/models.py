@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import Q
 
 class Editor(models.Model):
     first_name = models.CharField(max_length = 30)
@@ -35,6 +36,11 @@ class Category(models.Model):
 class Tag(models.Model):
 
     tags = models.CharField(max_length = 30)
+
+    @classmethod
+    def search_by_tag(cls,search_term):
+        tag_search = cls.objects.filter(tags__icontains = search_term)
+        return tag_search
 
     def __str__(self):
         return self.tags
@@ -77,9 +83,12 @@ class Image(models.Model):
 
 
     @classmethod
-    def search_pictures(cls, search_term):
-        result = cls.objects.filter(title__icontains = search_term , category__icontains = search_term , pub_date__date = search_term, tag__icontains = search_term)
-        return results
+    def search_by_title(cls,search_term):
+        title_search = cls.objects.filter(title__icontains = search_term)
+        return title_search
+
+
+
     # @classmethod
     # def search_by_category(cls, search_term):
     #     result = cls.objects.filter(category__icontains = search_term)

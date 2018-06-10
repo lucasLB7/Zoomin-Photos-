@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, Http404
 import datetime as dt
 from .models import Image,Category,Tag, Location
+from django.db.models import Q
 
 def homePageElements(request):
     all_images = Image.view_all_pictures()
@@ -9,9 +10,10 @@ def homePageElements(request):
     rel_tags = Tag.objects.all()
     date = dt.date.today()
     location = Location.objects.all()
+    title = "home"
     
     
-    return render(request, 'homepage.html', {"date": date, "all_images": all_images, "rel_categories":rel_categories, "rel_tags":rel_tags, "location": location})
+    return render(request, 'homepage.html', {"date": date, "all_images": all_images, "rel_categories":rel_categories, "rel_tags":rel_tags, "location": location, "title":title})
 
 
 
@@ -41,15 +43,16 @@ def images_by_date(request, past_date):
 def search_results(request):
 
     if 'article' in request.GET and request.GET["article"]:
-        search_term = request.GET.get("article")
-        searched_articles = Article.search(search_term)
+        search_term = request.GET.get("article") 
+        searched_articles = Image.search_by_title(search_term) or Tag.search_by_tag(search_term)
         message = f"{search_term}"
+        date = dt.date.today()
 
-        return render(request, 'projects/search.html', {"message":message, "articles": searched_articles})
+        return render(request, 'all_images/search.html', {"message":message, "articles": searched_articles, "date":date})
     else:
-        message = "Oop, looks like that doesn't exist.."
-        return render(request, 'projects/search.html',{"message":message})
-
+        message = "You havne't searched for any term"
+        date = dt.date.today()
+        return render(request, 'all_images/search.html',{"message":message, "date":date})
 
 def image(request, image_id):
     date = dt.date.today()
