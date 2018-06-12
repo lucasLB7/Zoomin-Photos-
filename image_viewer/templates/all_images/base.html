@@ -17,14 +17,32 @@
   {% endblock %}
 
 </head>
+
 <body>
     {% include "navbar.html" %}
 
-    {% block content %} <h1 class='text-center'>nothing</h1> {%endblock%}
+    {% block content %}
+    <div class="container">
+    <div class="row">
+
+           <div class="col-md-4 arrow_image">
+               <img src="../../../media/arrow_to_the_right.png" alt="">
+            </div>
+
+            <div class="col-md-6 ws-title">
+                <h1>Zoomin-Photos</h1>
+            </div>
+
+    </div> 
+    </div>
+
+    
+    {%endblock%}
 
     {% block scripts %}
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
      {% bootstrap_javascript %}
     {% endblock %}
 </body>
+
 </html>

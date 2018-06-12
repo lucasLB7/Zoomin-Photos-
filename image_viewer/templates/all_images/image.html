@@ -3,13 +3,13 @@
  {% block content %}
 
  <div class="container">
-
+   
     <div class="row">
 
         <div class="col-md-3">
             <h3 class="all-headers">Categories/tags:</h3>
             {% for category in image.category.all%}
-                <h4 class="article-tag">{{ category.category_type}} </h4>
+                <h4 class="article-tag">{{ category.category_type }} </h4>
                 {% endfor %}
         </div>
 
@@ -36,6 +36,7 @@
           </div>
 
    <div class="row of-less-importance-text">
+      <p>View comments: {{Comment.comment}}</p>
      <p>Posted <strong>{{image.pub_date|timesince}}</strong> ago, by <strong>{{article.editor.first_name}}</strong></p>
    </div>
 

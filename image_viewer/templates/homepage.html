@@ -1,12 +1,12 @@
 {% extends 'all_images/base.html' %}
+{% load bootstrap3 %}
 
 {% block content %}
 {{block.super}}
+<div class="background">
 <div class="container home-background">
 
-    <div class="ws-title">
-        <h1>Zoomin-Photos</h1>
-    </div>
+    
    <div class="row display-news">
        
         <h3 class="all-headers image-center">Browse images:</h3>
@@ -15,16 +15,41 @@
        {% for item in all_images %}
        
        <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 images-home">
-           <h1 class="cardHeader">{{item.title}}</h1>
+           <h1 class="cardHeader ">{{item.title}}</h1>
 
            {% if item.article_image.url %}
-           <img src="{{item.article_image.url}}" class="img-responsive" alt="Image">
+           <img src="{{ item.article_image.url }}" class="img-responsive" alt="Image">
            {% else %}
            <p></p>
            {% endif %}
            <h2> {{news_item.title}} </h2>
            <hr>
-           <p> {{news_item.post|truncatechars:400}} <a href="/image/{{item.id}}" class="btn btn-link">Read more</a></p>
+        <!-- Trigger the modal with a button -->
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#{{item.id}}">Open Modal</button>
+
+<!-- Modal -->
+<div id="{{item.id}}" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+          {% if item.article_image.url %}
+        <p><img src="{{ item.article_image.url }}" alt="Image"></p>
+        {% endif %}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+           <p> {{ news_item.post|truncatechars:150 }} <a href="/image/{{ item.id }}" class="btn btn-link">Read more</a></p>
                <p class="small"> Category:</p>
 
                {% for category in item.category.all%}
@@ -32,7 +57,7 @@
                     <span class="cat-tag">{{ category.category_type }} </span>
                     {% endfor %}
 
-                    <h4>Image tags: </h4>
+                    <h4>Likes: </h4>
                 {% for tag in item.tag.all %}
                     <span class="cat-tag">{{ tag.tags }} </span>
                     {% endfor %}
@@ -53,5 +78,19 @@
        {% endfor %}        
    </div>
 </div>
+<div class="container-fluid">
+
+    <form  action="{%url 'home'%}" method="post">
+      {%csrf_token%}
+  
+      {% bootstrap_form form layout='inline' %}
+      <input type="submit" value="Subscribe">
+    </form>
+  
+  </div>
+</div>
+
+
+
 {% endblock %}
 

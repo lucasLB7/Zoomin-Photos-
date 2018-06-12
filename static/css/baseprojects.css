@@ -1,11 +1,21 @@
 @import url('https://fonts.googleapis.com/css?family=Mitr|Orbitron|Share+Tech|Share+Tech+Mono|Titan+One');
+@import url('https://fonts.googleapis.com/css?family=Bungee+Shade|Coda+Caption:800|Holtwood+One+SC|Italiana|Libre+Barcode+39+Text');
 
 
 /* font-family: 'Share Tech', sans-serif;
 font-family: 'Share Tech Mono', monospace;
 font-family: 'Orbitron', sans-serif;
 font-family: 'Titan One', cursive;
-font-family: 'Mitr', sans-serif; */
+font-family: 'Mitr', sans-serif;
+
+---------------------------------
+
+font-family: 'Italiana', serif;
+font-family: 'Bungee Shade', cursive;
+font-family: 'Coda Caption', sans-serif;
+font-family: 'Holtwood One SC', serif;
+font-family: 'Libre Barcode 39 Text', cursive;
+*/
 
 
 .home-background{
@@ -17,6 +27,8 @@ font-family: 'Mitr', sans-serif; */
   background-color: #A0A0A0;
   border-radius: 5px 0 5px 0;
   margin: 2%;
+  /* opacity: 0.5; */
+
 }
 .images-home h1{
   color: aliceblue;
@@ -73,10 +85,38 @@ font-family: 'Mitr', sans-serif; */
 }
 
 .ws-title{
-  font-family: 'Share Tech Mono', monospace;
-  text-align: center;
+  background-image: url(/media/AdobeStock_164261744.jpeg);
+  text-align : center;
 }
 
 .ws-title h1{
-  font-size: 150px;
+  font-family: 'Libre Barcode 39 Text', cursive;
+  font-size: 60px;
 }
+
+.background{
+  background-image: url(/media/wild-elephants.jpg);
+  background-size: cover;
+}
+
+
+/* .arrow_image {
+  width: 200px;
+  height: 60px;
+
+} */
+
+.arrow_image{
+  background-color: #fff;
+  padding: 3%;
+}
+
+.arrow_image img{
+  width: 200px;
+  height: auto;
+  margin: 3%;
+}
+
+
+
+

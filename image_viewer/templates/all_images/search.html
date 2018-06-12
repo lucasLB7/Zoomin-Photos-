@@ -3,8 +3,8 @@
 <div class="container">
 
     <div class="row">
-        {% if articles %}
-            <h2>Found <strong>{{ articles|length }}</strong> sources for: <strong>{{ message }}</strong></h2>
+        {% if images %}
+            <h2>Found <strong>{{ images|length }}</strong> sources for: <strong>{{ message }}</strong></h2>
             <span class="glyphicon glyphicon-menu-down"></span>
             {% else %}
             <h2>Sorry found no articles for {{ message }}</h2>
@@ -13,14 +13,19 @@
 
 
     <div class="row">
-            {% if articles %}
-            {% for article in articles %}
+            {% if images %}
+            {% for image in images %}
               <div class="col-sm-6 col-md-3">
-                  <h1>{{article.title}}</h1>
-                  <p>{{article.description}}</p>
+                  <h1>{{image.title}}</h1>
+                  <p>{{image.description}}</p>
+                  <img src="{{image.article_image.url}}"  class="img-responsive" alt="">
+                  <a href="{% url 'image' image.id %}" class="btn btn-link">Read more</a></p>
+
               </div>
             {% endfor %}
             {% endif %}
+
+            
     </div>
 </div>
 {% endblock %}
