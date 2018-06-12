@@ -70,12 +70,12 @@ class Location(models.Model):
     class Meta:
         verbose_name_plural = "Location"
 
-class Comment(models.Model):
+# class Comment(models.Model):
     
-    body = models.CharField(max_length = 60)
+#     body = models.CharField(max_length = 60)
 
-    def __str__(self):
-        return self.body
+#     def __str__(self):
+#         return self.body
 
     @classmethod
     def view_all_comments(cls):
@@ -101,7 +101,7 @@ class Image(models.Model):
     pub_date = models.DateTimeField(auto_now_add=True)
     article_image = models.ImageField(upload_to = 'view_images/')
     location = models.ManyToManyField(Location, related_name='location')
-    comment = models.ManyToManyField(Comment, related_name='comment')
+    # comment = models.ManyToManyField(Comment, related_name='comment')
     # comments = models.ForeignKey(Comment)
 
     # def votes_count(self):

@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, Http404
 import datetime as dt
-from .models import Image,Category,Tag, Location, Comment, NewsLetterRecipients
+from .models import Image,Category,Tag, Location, NewsLetterRecipients
 from django.db.models import Q
 from .forms import NewsLetterForm
 
