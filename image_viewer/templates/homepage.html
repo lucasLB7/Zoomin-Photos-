@@ -9,11 +9,11 @@
     
    <div class="row display-news">
        
-        <h3 class="all-headers image-center">Browse images:</h3>
+        <h3 class="all-headers image-center text-center">Browse images:</h3>
 
-       <!-- Loop through news -->
+      
        {% for item in all_images %}
-       
+      
        <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 images-home">
            <h1 class="cardHeader ">{{item.title}}</h1>
 
@@ -39,7 +39,10 @@
       </div>
       <div class="modal-body">
           {% if item.article_image.url %}
-        <p><img src="{{ item.article_image.url }}" alt="Image"></p>
+        <p><img src="{{ item.article_image.url }}" class="img-responsive" alt="Image"></p>
+        <h2>{{item.title}}</h2>
+        <p> Posted by: <strong>{{item.editor}}</strong> </p>
+         <p> {{ news_item.post|truncatechars:150 }} <a href="/image/{{ item.id }}" class="btn btn-link my-link">Read more</a></p>
         {% endif %}
       </div>
       <div class="modal-footer">
@@ -49,20 +52,20 @@
 
   </div>
 </div>
-           <p> {{ news_item.post|truncatechars:150 }} <a href="/image/{{ item.id }}" class="btn btn-link">Read more</a></p>
-               <p class="small"> Category:</p>
+
+               <h4 class="white_fill"> Category:</h4>
 
                {% for category in item.category.all%}
 
                     <span class="cat-tag">{{ category.category_type }} </span>
                     {% endfor %}
 
-                    <h4>Likes: </h4>
+                    <h4 class="white_fill">Likes: </h4>
                 {% for tag in item.tag.all %}
                     <span class="cat-tag">{{ tag.tags }} </span>
                     {% endfor %}
                     
-                    <h4>Location: </h4>
+                    <h4 class="white_fill">Location: </h4>
                     {% for loc in item.location.all %}
                         <span class="cat-tag">{{ loc.country }} </span>
                         {% endfor %}

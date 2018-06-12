@@ -19,19 +19,19 @@ font-family: 'Libre Barcode 39 Text', cursive;
 
 
 .home-background{
-  background-color: #F5F5F5;
+  background-color: rgba(245, 245, 245, 0.432);
 }
 
 .images-home{
-  box-shadow: 10px 10px 5px grey;
-  background-color: #A0A0A0;
+  box-shadow: 10px 10px 5px black;
+  background-color: rgba(255, 255, 255, 0.404);
   border-radius: 5px 0 5px 0;
   margin: 2%;
   /* opacity: 0.5; */
 
 }
 .images-home h1{
-  color: aliceblue;
+  color: rgb(33, 38, 43);
   text-align: center;
   font-family: 'Share Tech Mono', monospace;
 }
@@ -70,13 +70,13 @@ font-family: 'Libre Barcode 39 Text', cursive;
 
 .cat-tag {
   font-size: 12px;
-  border-radius: 15px 5px 15px 5px;
-  background-color: lightblue;
-  width: 100px;
+  border-radius: 15px 15px 15px 15px;
+  background-color: rgb(224, 190, 79);
+  padding: 1%;
+  width: 120px;
   height: 60px;
   text-align: center;
-  box-shadow: 10px 10px 5px grey;
-  line-height: 60px; /* <-- this is what you must define */
+  line-height: 60px; 
   vertical-align: middle;
 }
 
@@ -91,7 +91,7 @@ font-family: 'Libre Barcode 39 Text', cursive;
 
 .ws-title h1{
   font-family: 'Libre Barcode 39 Text', cursive;
-  font-size: 60px;
+  font-size: 100px;
 }
 
 .background{
@@ -115,8 +115,21 @@ font-family: 'Libre Barcode 39 Text', cursive;
   width: 200px;
   height: auto;
   margin: 3%;
+  margin: 0 auto;
+  margin-bottom: 1%;
+	display: block;
 }
 
+.white_fill{
+  background-color: rgb(240, 240, 240);
+  border-radius: 25px;
+  text-align: center;
+  font-family: 'Coda Caption', sans-serif;
+}
+
+.my-link{
+  color: rgb(94, 0, 0);
+}
 
 
 
