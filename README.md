@@ -88,6 +88,8 @@ Our app contains standard django templating conponenets that handle __functional
 
 EXAMPLE:
 
+```models.py```
+
 ```python
 class Image(models.Model):
     title = models.CharField(max_length = 60)
@@ -105,34 +107,56 @@ class Image(models.Model):
         title_search = cls.objects.filter(title__icontains = search_term)
         return title_search
 ```
+We notice the **classmethod** search_by_title. This method defines a function that can be taken in by our **view.py** file.
+In the example above the method allows us to perform a search __by title__.
+The __icontains filter will **compare** the value of our search-term and the value of the title. 
+**regex** searching allows us to search by even a few letters instead of the entire word.
 
-## Persistent Connections
+In our **views.py** file we handle what happens with this classmethod:
 
-By default, Django doesn't use persistent connections with memcached. This is a
-huge performance problem, especially when using SASL authentication as the
-connection setup is even more expensive than normal.
+```views.py```
 
-You can fix this by putting the following code in your `wsgi.py` file:
 
 ```python
-# Fix django closing connection to MemCachier after every request (#11331)
-from django.core.cache.backends.memcached import BaseMemcachedCache
-BaseMemcachedCache.close = lambda self, **kwargs: None
+def search_results(request):
+
+    if 'article' in request.GET and request.GET["article"]:
+        search_term = request.GET.get("article") 
+        searched_images = Image.search_by_title(search_term) or Tag.search_by_tag(search_term) or Category.search_by_cat(search_term)
+        message = f"{search_term}"
+        date = dt.date.today()
+
+        return render(request, 'all_images/search.html', {"message":message, "images": searched_images, "date":date})
+    else:
+        message = "You havne't searched for any term"
+        date = dt.date.today()
+        return render(request, 'all_images/search.html',{"message":message, "date":date})
+```
+First we define the GET request by saying:
+- First we make sure the object "article" really exists in our request.
+- The search terms is the gotten from the requested object by passing the __key__ "article"
+
+
+
+Django allows us to connect this model to a postgresql db:
+
+
+```settings.py```
+
+```
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'zoominphotos',
+        'USER': '***...***',
+        'PASSWORD': '***...***',
+    }
+}
 ```
 
-There is a bug file against Django for this issue
-([#11331](https://code.djangoproject.com/ticket/11331)).
+The __engine__ key defines what kind of database you want to use.
 
-## Application Code
 
-In your application, use django.core.cache methods to access
-MemCachier. A description of the low-level caching API can be found
-[here](https://docs.djangoproject.com/en/1.8/topics/cache/#the-low-level-cache-api).
-All the built-in Django caching tools will work, too.
-
-Take a look at
-[memcachier_algebra/views.py](https://github.com/memcachier/examples-django/blob/master/memcachier_algebra/views.py)
-in this repository for an example.
 
 ## Get involved!
 
@@ -140,15 +164,34 @@ We are happy to receive bug reports, fixes, documentation enhancements,
 and other improvements.
 
 Please report bugs via the
-[github issue tracker](http://github.com/memcachier/examples-django/issues).
+[github issue tracker](https://github.com/lucasLB7/Zoomin-Photos-/issues).
 
-Master [git repository](http://github.com/memcachier/examples-django):
+Master [git repository](https://github.com/lucasLB7/Zoomin-Photos-):
 
-* `git clone git://github.com/memcachier/examples-django.git`
 
 ## Licensing
 
-This library is BSD-licensed.
+This library is MIT-licensed.
 
 
-![alt text](./media/1.jpg "Logo Title Text 1")
+```The MIT License
+
+Copyright (c) 2010-2018 Google, Inc. http://angularjs.org
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.```
