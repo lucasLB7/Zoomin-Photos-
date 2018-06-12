@@ -1,1 +1,1 @@
-web: gunicorn moringapost.wsgi
+web: gunicorn zoomin_photos.wsgi
