@@ -64,7 +64,7 @@ def search_results(request):
 
 def image(request, image_id):
     date = dt.date.today()
-    comment = Comment.view_all_comments()
+    # comment = Comment.view_all_comments()
 
     try:
         image = Image.objects.get(id = image_id)

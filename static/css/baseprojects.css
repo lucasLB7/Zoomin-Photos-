@@ -26,7 +26,7 @@ font-family: 'Libre Barcode 39 Text', cursive;
   box-shadow: 10px 10px 5px black;
   background-color: rgba(255, 255, 255, 0.404);
   border-radius: 5px 0 5px 0;
-  margin: 2%;
+  /* margin: 2%; */
   /* opacity: 0.5; */
 
 }
@@ -95,8 +95,9 @@ font-family: 'Libre Barcode 39 Text', cursive;
 }
 
 .background{
-  background-image: url(/media/wild-elephants.jpg);
-  background-size: cover;
+  background-color: rgb(216, 110, 91);
+  width: 99%;
+  /* background-size: cover; */
 }
 
 
@@ -132,4 +133,17 @@ font-family: 'Libre Barcode 39 Text', cursive;
 }
 
 
+.navbar{
+  background-color: rgb(216, 110, 91);
 
+}
+
+.travel_emoji img{
+  width: 300px;
+}
+
+
+.search-box{
+  background-color: #fff;
+  height: 300px;
+}
